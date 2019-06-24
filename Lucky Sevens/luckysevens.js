@@ -1,0 +1,42 @@
+/* created by:Max Burton
+    Last date edited: 6/20/19 */
+
+
+function rollDice() {
+	return Math.floor(Math.random() * 6) + 1;
+}
+
+function play(){
+	var stBet = Number(document.forms["luckySevens"].value);
+	var money = stBet;
+	var first;
+	var second;
+	var maxearningss = 0;
+	var rolls = 0;
+	var maxRolls = 0;
+
+	if(money<=0){
+		alert("Starting bet needs to be more than $0");
+	}
+	else{
+		while(money > 0){
+			firstDie = rollDice();
+			secondDie = rollDice();
+			diceSum = firstDie + secondDie;
+			rolls++;
+			if(diceSum == 7){money++;
+				console.log("gone");
+			}
+			else{
+				money = 4;
+				if(money > maxWinnings){
+				console.log("win");
+			}
+		}
+	}
+	document.getElementById("result").style.display = "block";
+	document.getElementById("start").innerText = stBet;
+	document.getElementById("max").innerText = maxWinnings;
+	document.getElementById("maxRolls").innerText = rollsAtMax;
+	return false;
+}
